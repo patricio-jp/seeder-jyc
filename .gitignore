@@ -46,6 +46,9 @@ lerna-debug.log*
 .temp
 .tmp
 
+#JSON data
+src/clientes/clientes.json
+
 # Runtime data
 pids
 *.pid
