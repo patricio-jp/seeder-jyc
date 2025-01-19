@@ -1,4 +1,18 @@
-const exceptionsToCapitalize = ['de', 'del', 'la', 'los', 'las', 'y'];
+const exceptionsToCapitalize = [
+  'de',
+  'del',
+  'la',
+  'los',
+  'las',
+  'y',
+  'con',
+  'c/',
+  'semi-nuevo',
+  'semi-nueva',
+  'semi-automatico',
+  'semi-industrial',
+];
+const exceptionsToLowerCase = ['tv', 'tcl', 'lts', 'zte'];
 
 function capitalizeFirstLetter(string) {
   if (string) return string.charAt(0).toUpperCase() + string.slice(1);
@@ -9,13 +23,17 @@ function capitalizeWords(string) {
     return string
       .split(' ')
       .map((word, index) => {
-        if (index == 0) {
-          return capitalizeFirstLetter(word);
+        if (exceptionsToLowerCase.includes(word)) {
+          return word.toUpperCase();
         } else {
-          if (exceptionsToCapitalize.includes(word)) {
-            return word;
-          } else {
+          if (index == 0) {
             return capitalizeFirstLetter(word);
+          } else {
+            if (exceptionsToCapitalize.includes(word)) {
+              return word;
+            } else {
+              return capitalizeFirstLetter(word);
+            }
           }
         }
       })
