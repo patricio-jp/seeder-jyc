@@ -4,7 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  Index,
+  //Index,
   OneToMany,
   //OneToOne,
   PrimaryGeneratedColumn,
@@ -21,14 +21,13 @@ export class Producto extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  @Index({ unique: true })
+  @Column({ nullable: true })
   codigo: string;
 
   @Column()
   nombre: string;
 
-  @Column('int')
+  @Column('int', { default: 0 })
   stock: number;
 
   @OneToMany(() => Costo, (costo) => costo.producto, {

@@ -108,8 +108,9 @@ const data = lines.slice(1).map((line) => {
     let arrayProductos = productos.replaceAll('"', '').split('//');
     let objProductos = [];
     for (let i = 0; i < numProductos; i++) {
+      let producto = {};
       if (arrayProductos[i].includes('(')) {
-        obj['requireIntervention'] = true;
+        producto['requireIntervention'] = true;
       }
       let [quantity, product] = arrayProductos[i].split(' ');
       quantity = isNaN(quantity) ? 1 : Number(quantity);
@@ -124,6 +125,7 @@ const data = lines.slice(1).map((line) => {
       //console.log('Complete line: ', arrayProductos[i]);
       //console.log(quantity, product);
       objProductos.push({
+        ...producto,
         producto: capitalizeWords(product.toLowerCase()),
         cantidad: quantity,
         precioUnitario: 0,

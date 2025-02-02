@@ -10,9 +10,10 @@ const exceptionsToCapitalize = [
   'semi-nuevo',
   'semi-nueva',
   'semi-automatico',
+  'semi-automático',
   'semi-industrial',
 ];
-const exceptionsToLowerCase = ['tv', 'tcl', 'lts', 'zte'];
+const exceptionsToLowerCase = ['tv', 'tcl', 'lts', 'zte', 'bgh'];
 
 function capitalizeFirstLetter(string) {
   if (string) return string.charAt(0).toUpperCase() + string.slice(1);
