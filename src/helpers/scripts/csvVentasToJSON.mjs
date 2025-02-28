@@ -36,7 +36,10 @@ const data = lines.slice(1).map((line) => {
       if (header[index] === 'Detalle') {
         let prods = value.replaceAll('"', '').split('//');
         numProductos = prods.length;
-        productos = value.replaceAll('"', '');
+        productos = value
+          .replaceAll('""', '#')
+          .replaceAll('"', '')
+          .replaceAll('#', '"');
       }
 
       if (header[index] === 'Cant. Cuotas') {
@@ -105,7 +108,7 @@ const data = lines.slice(1).map((line) => {
   });
 
   if (numProductos > 1) {
-    let arrayProductos = productos.replaceAll('"', '').split('//');
+    let arrayProductos = productos.split('//');
     let objProductos = [];
     for (let i = 0; i < numProductos; i++) {
       let producto = {};
