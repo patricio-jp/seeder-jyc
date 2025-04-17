@@ -4,6 +4,7 @@ import { Logger } from '@nestjs/common';
 import { ClientesSeeder } from './clientes/clientes.seeder';
 import { VentasSeeder } from './ventas/ventas.seeder';
 import { ProductosSeeder } from './productos/productos.seeder';
+import { UsuariosSeeder } from './usuarios/usuarios.seeder';
 
 async function bootstrap() {
   NestFactory.create(SeederModule)
@@ -12,6 +13,7 @@ async function bootstrap() {
       const clientesSeeder = appContext.get(ClientesSeeder);
       const productosSeeder = appContext.get(ProductosSeeder);
       const ventasSeeder = appContext.get(VentasSeeder);
+      const userSeeder = appContext.get(UsuariosSeeder);
 
       clientesSeeder
         .seed()
@@ -25,6 +27,10 @@ async function bootstrap() {
         })
         .then(() => {
           logger.debug('Ventas seeded successfully');
+          return userSeeder.seed();
+        })
+        .then(() => {
+          logger.debug('User seeded successfully');
         })
         .catch((error) => {
           logger.error('Error seeding data', error);

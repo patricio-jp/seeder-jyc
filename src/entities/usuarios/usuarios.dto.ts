@@ -23,6 +23,8 @@ export class CreateUsuarioDTO {
 
   rol: Rol;
 
+  estado?: number;
+
   saldo?: number;
 
   observaciones?: string;
